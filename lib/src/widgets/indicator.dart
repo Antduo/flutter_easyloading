@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/src/widgets/cy_white_cupertino_activity_indicator.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../easy_loading.dart';
@@ -37,9 +38,13 @@ class _LoadingIndicatorState extends State<LoadingIndicator> {
     double _width = _size;
     switch (EasyLoadingTheme.indicatorType) {
       case EasyLoadingIndicatorType.fadingCircle:
-        _indicator = SpinKitFadingCircle(
-          color: _indicatorColor,
-          size: _size,
+//        _indicator = Container(
+//          color: Colors.white,
+//          width: 20,
+//          height: 20,
+//        );
+        _indicator = CYWhiteCupertinoActivityIndicator(
+          radius: 18,
         );
         break;
       case EasyLoadingIndicatorType.circle:
