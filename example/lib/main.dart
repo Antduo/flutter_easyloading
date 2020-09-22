@@ -21,6 +21,7 @@ void configLoading() {
     ..indicatorColor = Colors.yellow
     ..textColor = Colors.yellow
     ..maskColor = Colors.blue.withOpacity(0.5)
+    ..fontWeight = FontWeight.bold
     ..userInteractions = true;
 }
 

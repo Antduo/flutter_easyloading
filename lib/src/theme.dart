@@ -46,6 +46,8 @@ class EasyLoadingTheme {
   /// font size of status
   static double get fontSize => EasyLoading.instance.fontSize;
 
+  static FontWeight get fontWeight => EasyLoading.instance.fontWeight;
+
   /// size of indicator
   static double get indicatorSize => EasyLoading.instance.indicatorSize;
 

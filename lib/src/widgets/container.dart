@@ -28,9 +28,7 @@ class LoadingContainerState extends State<LoadingContainer> {
   void initState() {
     super.initState();
     _status = widget.status;
-    _animationDuration = widget.animation
-        ? const Duration(milliseconds: 300)
-        : const Duration(milliseconds: 0);
+    _animationDuration = widget.animation ? const Duration(milliseconds: 300) : const Duration(milliseconds: 0);
     if (widget.animation) {
       Future.delayed(const Duration(milliseconds: 30), () {
         if (!mounted) return;
@@ -86,9 +84,7 @@ class LoadingContainerState extends State<LoadingContainer> {
           children: <Widget>[
             widget.indicator != null
                 ? Container(
-                    margin: _status?.isNotEmpty == true
-                        ? EasyLoadingTheme.textPadding
-                        : EdgeInsets.zero,
+                    margin: _status?.isNotEmpty == true ? EasyLoadingTheme.textPadding : EdgeInsets.zero,
                     child: widget.indicator,
                   )
                 : null,
@@ -98,6 +94,7 @@ class LoadingContainerState extends State<LoadingContainer> {
                     style: TextStyle(
                       color: EasyLoadingTheme.textColor,
                       fontSize: EasyLoadingTheme.fontSize,
+                      fontWeight: EasyLoadingTheme.fontWeight,
                     ),
                     textAlign: EasyLoadingTheme.textAlign,
                   )

@@ -80,6 +80,8 @@ class EasyLoading {
   /// fontSize of loading, default 15.0.
   double fontSize;
 
+  FontWeight fontWeight;
+
   /// width of progress indicator, default 2.0.
   double progressWidth;
 
@@ -124,13 +126,18 @@ class EasyLoading {
   Timer _timer;
 
   OverlayEntry get overlayEntry => _overlayEntry;
+
   Widget get progress => _progress;
+
   GlobalKey<LoadingContainerState> get key => _key;
+
   GlobalKey<ProgressState> get progressKey => _progressKey;
+
   Timer get timer => _timer;
 
   factory EasyLoading() => _getInstance();
   static EasyLoading _instance;
+
   static EasyLoading get instance => _getInstance();
 
   EasyLoading._internal() {
@@ -142,6 +149,7 @@ class EasyLoading {
     indicatorSize = 40.0;
     radius = 5.0;
     fontSize = 15.0;
+    fontWeight = FontWeight.bold;
     progressWidth = 2.0;
     lineWidth = 4.0;
     displayDuration = const Duration(milliseconds: 2000);
@@ -173,8 +181,7 @@ class EasyLoading {
   }
 
   /// show progress with [value] [status], value should be 0.0 ~ 1.0.
-  static void showProgress(
-    double value, {
+  static void showProgress(double value, {
     String status,
   }) {
     assert(value >= 0.0 && value <= 1.0, 'value should be 0.0 ~ 1.0');
@@ -202,8 +209,7 @@ class EasyLoading {
   }
 
   /// showSuccess [status] [duration]
-  static void showSuccess(
-    String status, {
+  static void showSuccess(String status, {
     Duration duration,
   }) {
     Widget w = _getInstance().successWidget ??
@@ -220,8 +226,7 @@ class EasyLoading {
   }
 
   /// showError [status] [duration]
-  static void showError(
-    String status, {
+  static void showError(String status, {
     Duration duration,
   }) {
     Widget w = _getInstance().errorWidget ??
@@ -238,8 +243,7 @@ class EasyLoading {
   }
 
   /// showInfo [status] [duration]
-  static void showInfo(
-    String status, {
+  static void showInfo(String status, {
     Duration duration,
   }) {
     Widget w = _getInstance().infoWidget ??
@@ -256,8 +260,7 @@ class EasyLoading {
   }
 
   /// showToast [status] [duration]
-  static void showToast(
-    String status, {
+  static void showToast(String status, {
     Duration duration,
   }) {
     _getInstance()._show(
@@ -298,27 +301,27 @@ class EasyLoading {
 
     if (_getInstance().loadingStyle == EasyLoadingStyle.custom) {
       assert(
-        _getInstance().backgroundColor != null,
-        'while loading style is custom, backgroundColor should not be null',
+      _getInstance().backgroundColor != null,
+      'while loading style is custom, backgroundColor should not be null',
       );
       assert(
-        _getInstance().indicatorColor != null,
-        'while loading style is custom, indicatorColor should not be null',
+      _getInstance().indicatorColor != null,
+      'while loading style is custom, indicatorColor should not be null',
       );
       assert(
-        _getInstance().progressColor != null,
-        'while loading style is custom, progressColor should not be null',
+      _getInstance().progressColor != null,
+      'while loading style is custom, progressColor should not be null',
       );
       assert(
-        _getInstance().textColor != null,
-        'while loading style is custom, textColor should not be null',
+      _getInstance().textColor != null,
+      'while loading style is custom, textColor should not be null',
       );
     }
 
     if (_getInstance().maskType == EasyLoadingMaskType.custom) {
       assert(
-        _getInstance().maskColor != null,
-        'while mask type is custom, maskColor should not be null',
+      _getInstance().maskColor != null,
+      'while mask type is custom, maskColor should not be null',
       );
     }
 
@@ -327,12 +330,13 @@ class EasyLoading {
     _remove();
 
     OverlayEntry _overlayEntry = OverlayEntry(
-      builder: (BuildContext context) => LoadingContainer(
-        key: _key,
-        status: status,
-        indicator: w,
-        animation: _animation,
-      ),
+      builder: (BuildContext context) =>
+          LoadingContainer(
+            key: _key,
+            status: status,
+            indicator: w,
+            animation: _animation,
+          ),
     );
 
     Overlay.of(_getInstance().context).insert(_overlayEntry);
